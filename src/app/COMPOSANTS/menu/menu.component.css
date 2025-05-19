@@ -1,18 +1,27 @@
 /* ============================= */
 /* SIDEBAR BASE */
 /* ============================= */
-.sidebar-content {
-  width: 280px;
-  background: #ffffff;
-  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease;
-  border-radius: 0 20px 20px 0;
-  overflow: hidden;
-  height: 100dvh;
+
+/* ============================= */
+/* HEADER AJUSTÉ (Un peu plus haut) */
+/* ============================= */
+.sidebar-header {
+  /* On passe de 10px à 16px pour donner un peu d'air */
+  padding: 16px 20px; 
+  height: 30px;
+  background: linear-gradient(135deg, #4e8fd9, #6ec1e4);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 0;
 }
 
+.sidebar-header .brand {
+  margin: 0;
+  font-size: 1.3rem; /* On remonte un peu la taille du texte */
+  letter-spacing: 1.5px;
+  text-transform: uppercase; /* Pour un look plus pro */
+}
 /* SCROLL si menu long */
 .sidebar-menu {
   display: flex;
@@ -36,6 +45,7 @@
   color: white;
   font-weight: bold;
   text-align: center;
+  border-radius: 0; /* Bordures carrées */
 }
 
 /* ============================= */
@@ -46,8 +56,8 @@
   align-items: center;
   gap: 15px;
   padding: 12px 20px;
-  margin: 4px 12px;
-  border-radius: 10px;
+  margin: 0; /* Suppression des marges pour coller aux bords */
+  border-radius: 0; /* Suppression des arrondis des boutons */
   color: #2c3e50;
   text-decoration: none;
   font-weight: 500;
@@ -58,11 +68,12 @@
   font-size: 18px;
   min-width: 22px;
   text-align: center;
+  color: #000;
 }
 
 /* HOVER */
 .menu-item:hover {
-  background: rgba(78, 143, 217, 0.1);
+  background: rgba(78, 143, 217, 0.05);
   color: #4e8fd9;
 }
 
@@ -88,7 +99,6 @@
 /* MOBILE RESPONSIVE */
 /* ============================= */
 @media (max-width: 992px) {
-
   .sidebar-content {
     position: fixed;
     top: 0;
@@ -99,30 +109,14 @@
     z-index: 1001;
   }
 
-  /* Quand ouverte */
   .sidebar-content.collapsed {
     transform: translateX(0);
     width: 280px;
   }
-
 }
 
-/* ============================= */
-/* SMALL PHONES */
-/* ============================= */
 @media (max-width: 400px) {
-
   .sidebar-content.collapsed {
     width: 85%;
   }
-
-  .menu-item {
-    padding: 12px 15px;
-    font-size: 14px;
-  }
-
-  .sidebar-header {
-    padding: 16px;
-  }
-
 }
