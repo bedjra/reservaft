@@ -1,1 +1,37 @@
-<p>signup works!</p>
+<div class="background">
+  <div class="auth-container">
+    <div class="form-box">
+      <h2> 📝 Inscription</h2>
+
+      <form (ngSubmit)="onSignup()">
+        
+        <!-- Email -->
+        <div class="input-group">
+          <label for="email">Email :</label>
+          <input id="email" type="email" placeholder="Entrez votre email" required [(ngModel)]="email" name="email">
+        </div>
+
+        <!-- Mot de passe -->
+        <div class="input-group">
+          <label for="password">Mot de passe :</label>
+          <input id="password" type="password" placeholder="Entrez votre mot de passe" required [(ngModel)]="password" name="password">
+        </div>
+
+        <!-- Sélecteur de rôle -->
+        <div class="input-group">
+          <label for="role">Rôle :</label>
+          <select id="role" [(ngModel)]="role" name="role" required>
+            <option value="USER">Utilisateur</option>
+            <option value="ADMIN">Administrateur</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary">S'inscrire</button>
+
+        <p class="switch">
+          Déjà un compte ? <a (click)="goLogin()">Se connecter</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

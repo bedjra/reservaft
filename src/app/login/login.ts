@@ -15,6 +15,9 @@ export class Login {
 
   constructor(private router: Router) {}
 
+goSignup() {
+  this.router.navigate(['/signup']);
+}
   onLogin() {
     // Ici tu fais ton traitement de login
     // Puis navigation vers dashboard si succès
