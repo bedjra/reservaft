@@ -1,41 +1,41 @@
 <div class="sidebar-content" [class.collapsed]="collapsed">
+
   <div class="sidebar-header">
     <h3 class="brand">
-      <span class="brand-text" [class.hidden]="collapsed">RESERVA</span>
+      <span class="brand-text" *ngIf="!collapsed">RESERVA</span>
     </h3>
   </div>
 
   <nav class="sidebar-menu">
-    <!-- Tableau de bord -->
-    <a class="menu-item" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+
+    <a class="menu-item"
+       routerLink="/dashboard"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: true }">
       <i class="fas fa-tachometer-alt"></i>
-      <span class="menu-text">Tableau de bord</span>
+      <span class="menu-text" *ngIf="!collapsed">Tableau de bord</span>
     </a>
 
-    <!-- Logement -->
-    <a class="menu-item" routerLink="/logement" routerLinkActive="active">
+    <a class="menu-item"
+       routerLink="/logement"
+       routerLinkActive="active">
       <i class="fas fa-home"></i>
-      <span class="menu-text">Logement</span>
+      <span class="menu-text" *ngIf="!collapsed">Logement</span>
     </a>
 
-    <!-- Réservation -->
-    <a class="menu-item" routerLink="/reservation" routerLinkActive="active">
+    <a class="menu-item"
+       routerLink="/reservation"
+       routerLinkActive="active">
       <i class="fas fa-book"></i>
-      <span class="menu-text">Réservation</span>
+      <span class="menu-text" *ngIf="!collapsed">Réservation</span>
     </a>
 
-    <!-- Users -->
-    <a class="menu-item" routerLink="/users" routerLinkActive="active">
+    <a class="menu-item"
+       routerLink="/users"
+       routerLinkActive="active">
       <i class="fas fa-users"></i>
-      <span class="menu-text">Users</span>
+      <span class="menu-text" *ngIf="!collapsed">Users</span>
     </a>
 
-    <!-- Logout (exemple, ajoute ici si nécessaire) -->
-    <!--
-    <a class="menu-item logout" (click)="logout()">
-      <i class="fas fa-sign-out-alt"></i>
-      <span class="menu-text">Logout</span>
-    </a>
-    -->
   </nav>
 </div>

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -6,7 +7,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css',
-  imports: [RouterModule], // ✅ Ajoute ce module ici
+  imports: [RouterModule,CommonModule], // ✅ Ajoute ce module ici
 })
 export class MenuComponent {
   @Input() collapsed = false;

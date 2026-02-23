@@ -1,13 +1,12 @@
-/* 🌐 STRUCTURE GLOBALE */
-html, body, app-root {
+/* GLOBAL */
+html, body {
   height: 100%;
   margin: 0;
-  padding: 0;
   font-family: "Segoe UI", sans-serif;
-  overflow: hidden; /* scroll limité */
-  background: #f8f9fa;
+  background: #f4f6f9;
 }
 
+/* LAYOUT */
 .layout-container {
   display: flex;
   height: 100vh;
@@ -16,125 +15,72 @@ html, body, app-root {
 
 /* SIDEBAR */
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 290px;
-  min-width: 200px;
-  max-width: 30vw;
+  width: 280px;
   color: white;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  transition: width 0.3s ease;
-  box-shadow: 0 0 30px rgba(0,0,0,0.05);
-  z-index: 1000;
+  transition: width 0.3s ease, transform 0.3s ease;
+  /* added transform transition for smooth responsive collapse */
 }
 
 .sidebar.collapsed {
   width: 70px;
 }
 
-/* MAIN WRAPPER (HEADER + CONTENU) */
-.main-wrapper {
-  margin-left: 290px;
-  width: calc(100% - 290px);
-  height: 100vh;
+/* MAIN AREA */
+.main-area {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  transition: margin-left 0.3s ease, width 0.3s ease;
   overflow: hidden;
-}
-
-.sidebar.collapsed + .main-wrapper {
-  margin-left: 70px;
-  width: calc(100% - 70px);
+  transition: margin-left 0.3s ease;
+  /* replaced generic 'margin' to margin-left for sidebar animation */
 }
 
 /* HEADER */
 app-header {
   height: 70px;
   flex-shrink: 0;
-  position: fixed;
-  top: 0;
-  left: 290px;
-  width: calc(100% - 290px);
-  z-index: 900;
+  background: white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: white;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  border-radius: 0 0 20px 20px;
   padding: 0 20px;
-  transition: left 0.3s ease, width 0.3s ease;
-}
-
-.sidebar.collapsed + .main-wrapper app-header {
-  left: 70px;
-  width: calc(100% - 70px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for header */
+  z-index: 500;
 }
 
 /* PAGE CONTENT */
 .page-content {
-  margin-top: 70px; /* en dessous du header */
+  flex: 1;
   padding: 25px;
-  height: calc(100vh - 70px);
-  overflow-y: auto; /* scroll ici seulement */
-  flex-grow: 1;
-  background: #f8f9fa;
+  overflow-y: auto;
+  background: #f4f6f9;
 }
 
-/* 💡 Effets généraux pour cohérence avec login/signup */
+/* SCROLLBAR */
 .page-content::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .page-content::-webkit-scrollbar-thumb {
-  background: rgba(78,143,217,0.3);
-  border-radius: 8px;
-}
-
-.page-content::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
 }
 
 /* RESPONSIVE */
-@media (max-width: 1400px) {
+@media (max-width: 992px) {
   .sidebar {
-    width: 280px;
-  }
-
-  .main-wrapper {
-    margin-left: 280px;
-    width: calc(100% - 280px);
-  }
-
-  app-header {
-    left: 280px;
-    width: calc(100% - 280px);
+    position: fixed; /* better than absolute for overlay */
+    z-index: 1000;
+    height: 100%;
+    transform: translateX(-100%);
   }
 
   .sidebar.collapsed {
-    width: 70px;
+    transform: translateX(0); /* toggled with JS for mobile menu */
   }
 
-  .sidebar.collapsed + .main-wrapper {
-    margin-left: 70px;
-    width: calc(100% - 70px);
+  .main-area {
+    margin-left: 0; /* reset margin on mobile */
   }
-
-  .sidebar.collapsed + .main-wrapper app-header {
-    left: 70px;
-    width: calc(100% - 70px);
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar { width: 70px; }
-  .main-wrapper { margin-left: 70px; width: calc(100% - 70px); }
-  app-header { left: 70px; width: calc(100% - 70px); }
-  .page-content { padding: 15px; }
 }

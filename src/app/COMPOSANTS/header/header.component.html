@@ -1,38 +1,78 @@
 <div class="header-container">
+
+  <!-- LEFT -->
   <div class="header-left">
-    <button class="menu-toggle btn" (click)="onToggleSidebar()">
+    
+    <button type="button" class="menu-toggle" (click)="onToggleSidebar()">
       <i class="fas fa-bars"></i>
     </button>
-    <nav aria-label="breadcrumb" class="breadcrumb-custom">
-      <li class="breadcrumb-item active">{{ currentPage }}</li>
+
+    <nav class="breadcrumb-custom">
+      <span>{{ currentPage }}</span>
     </nav>
+
   </div>
 
+
+  <!-- RIGHT -->
   <div class="header-right">
-    <!-- Recherche -->
+
+    <!-- SEARCH -->
     <div class="search-box">
-      <input type="text" placeholder="Faire votre recherche..." [(ngModel)]="searchQuery" (keyup.enter)="onSearch()" #searchInput>
-      <button class="search-btn" (click)="onSearch()"><i class="fas fa-search"></i></button>
+      <input 
+        type="text"
+        placeholder="Faire votre recherche..."
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="onSearch()"
+      />
+      <button type="button" class="search-btn" (click)="onSearch()">
+        <i class="fas fa-search"></i>
+      </button>
     </div>
 
-    <!-- Notifications -->
+    <!-- NOTIFICATION -->
     <div class="notification-bell" (click)="toggleNotifications()">
       <i class="fas fa-bell"></i>
-      <span class="badge" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+      <span class="badge" *ngIf="notificationCount > 0">
+        {{ notificationCount }}
+      </span>
     </div>
 
-    <!-- Profil utilisateur -->
-    <div class="user-profile" [class.show]="userMenuOpen" (click)="toggleUserMenu()">
-      <div class="user-avatar">{{ userInitials }}</div>
-      <span class="user-name">{{ userName }}</span>
-      <i class="fas fa-chevron-down"></i>
+    <!-- USER -->
+    <div class="user-profile" (click)="toggleUserMenu()">
 
-      <div class="dropdown-menu" [class.show]="userMenuOpen">
-        <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profil</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+      <div class="user-avatar">
+        {{ userInitials }}
       </div>
-    </div>
-  </div>
-</div>
 
+      <span class="user-name">
+        {{ userName }}
+      </span>
+
+      <i class="fas fa-chevron-down"
+         [class.rotate]="userMenuOpen">
+      </i>
+
+      <!-- DROPDOWN -->
+      <div class="dropdown-menu"
+           *ngIf="userMenuOpen">
+
+        <a class="dropdown-item">
+          <i class="fas fa-user"></i>
+          Profil
+        </a>
+
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-item">
+          <i class="fas fa-sign-out-alt"></i>
+          Déconnexion
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,24 +1,25 @@
 <div class="layout-container">
 
   <!-- Sidebar -->
-  <div class="sidebar" [class.collapsed]="sidebarCollapsed">
-    <app-menu [collapsed]="sidebarCollapsed" (menuItemClick)="onMenuItemClick($event)"></app-menu>
-  </div>
+  <aside class="sidebar" [class.collapsed]="sidebarCollapsed">
+    <app-menu 
+      [collapsed]="sidebarCollapsed" 
+      (menuItemClick)="onMenuItemClick($event)">
+    </app-menu>
+  </aside>
 
-  <!-- Main wrapper -->
-  <div class="main-wrapper">
+  <!-- Main Area -->
+  <div class="main-area">
 
-    <!-- Header -->
     <app-header 
       [currentPage]="currentPage" 
       (toggleSidebar)="toggleSidebar()" 
       (searchQuery)="onSearch($event)">
     </app-header>
 
-    <!-- Page content -->
-    <div class="page-content">
+    <main class="page-content">
       <router-outlet></router-outlet>
-    </div>
+    </main>
 
   </div>
 
