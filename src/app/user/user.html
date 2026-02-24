@@ -1,0 +1,97 @@
+<div class="container" *ngIf="ongletActif === 'utilisateur' && roleConnecte !== 'SECRETAIRE'">
+  <!-- Formulaire -->
+  <div class="left-box">
+    <h4>{{ isEditMode ? 'Modifier un utilisateur' : 'Ajouter un utilisateur' }}</h4>
+    <form #formUser="ngForm" (ngSubmit)="isEditMode ? modifierUtilisateur() : ajouterUtilisateur()">
+      <div class="form-group">
+        <label for="roleUser">Rôle :</label>
+        <select id="roleUser" [(ngModel)]="credentials.role" name="role" required>
+          <option value="" disabled selected>Sélectionnez un rôle</option>
+          <option *ngFor="let r of roles" [value]="r">{{ r | titlecase }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="emailUser">Nom :</label>
+        <input type="text" id="emailUser" [(ngModel)]="credentials.email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="passwordUser">Mot de passe :</label>
+        <input
+          [type]="passwordVisible ? 'text' : 'password'"
+          id="passwordUser"
+          [(ngModel)]="credentials.password"
+          name="password"
+          required
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPasswordUser">Confirmer le mot de passe :</label>
+        <input
+          [type]="passwordVisible ? 'text' : 'password'"
+          id="confirmPasswordUser"
+          [(ngModel)]="credentials.confirmPassword"
+          name="confirmPassword"
+          required
+          autocomplete="off"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="submit-btn"
+        [disabled]="!formUser.valid || credentials.password !== credentials.confirmPassword"
+      >
+        {{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}
+      </button>
+
+      <div
+        *ngIf="
+          credentials.password &&
+          credentials.confirmPassword &&
+          credentials.password !== credentials.confirmPassword
+        "
+        class="error-msg"
+      >
+        Les mots de passe ne correspondent pas.
+      </div>
+    </form>
+  </div>
+
+  <!-- Tableau utilisateurs -->
+  <div class="right-box">
+    <h4>Gestion des Utilisateurs</h4>
+    <table *ngIf="utilisateurs.length > 0">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Rôle</th>
+          <th>Nom</th>
+          <th>Mdp</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of utilisateurs; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ u.role }}</td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.password }}</td>
+          <td>
+            <button class="btn btn-warning me-2" (click)="remplirFormulairePourModification(u)">
+              <i class="fas fa-edit"></i>
+            </button>
+
+            <button class="btn btn-danger" (click)="supprimerUtilisateur(i)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="utilisateurs.length === 0">Aucun utilisateur trouvé.</p>
+  </div>
+</div>

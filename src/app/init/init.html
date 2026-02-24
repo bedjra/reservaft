@@ -1,69 +1,194 @@
-<!-- HERO SECTION -->
-<header class="hero">
-  <div class="hero-left">
-    <h1>Réservez vos logements <span>sans stress.</span></h1>
-    <p>Reservaft vous permet de trouver et réserver des logements rapidement, simplement et en toute sécurité.</p>
-    <div class="hero-buttons">
-      <button routerLink="/login" class="btn-primary">🔐 Se connecter</button>
-      <button
-        onclick="window.open('https://wa.me/22897943844?text=Nous%20voulons%20vous%20connecter%20%C3%A0%20la%20plateforme', '_blank')"
-        class="btn-outline">
-        📲 Contacter l'admin
-      </button>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">Reservaft</span>
     </div>
-  </div>
-
-  <div class="hero-right">
-    <div class="mockup">🏠 Aperçu Application</div>
-  </div>
-</header>
-
-<!-- FEATURES SECTION -->
-<section class="features">
-  <div class="feature-card">
-    <h3>🔎 Recherche rapide</h3>
-    <p>Trouvez des logements disponibles en quelques secondes.</p>
-  </div>
-  <div class="feature-card">
-    <h3>📅 Réservation simple</h3>
-    <p>Réservez facilement avec des dates et un calcul automatique.</p>
-  </div>
-  <div class="feature-card">
-    <h3>🔒 Sécurisé</h3>
-    <p>Authentification et accès protégé pour chaque utilisateur.</p>
-  </div>
-</section>
-
-<!-- CTA SECTION -->
-<section class="cta">
-  <h2>Prêt à réserver votre prochain logement ?</h2>
-  <div class="cta-buttons">
-    <button routerLink="/logements" class="btn-primary">Voir les logements</button>
-    <button onclick="window.location.href='mailto:admin@reservaft.com'" class="btn-outline">📧 Contacter
-      l'admin</button>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-section">
-      <h4>Reservq</h4>
-      <p>Plateforme de réservation simple et sécurisée.</p>
+    <div class="nav-links">
+      <a href="#features">Fonctionnalités</a>
+      <a href="#cta">Logements</a>
+      <a href="mailto:support@reservaft.com">Support</a>
+      <a href="/login" class="nav-btn">Se connecter</a>
     </div>
-    <div class="footer-section">
-      <h4>Contact</h4>
-      <p>Email: support@reservaft.com</p>
-      <p>Téléphone: +228 97 94 38 44</p>
-    </div>
-    <div class="footer-section">
-      <h4>Suivez-nous</h4>
-      <p>Facebook | Twitter | LinkedIn</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    © 2026 Reservaft. Tous droits réservés.
-  </div>
-</footer>
+  </nav>
 
-<router-outlet />
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">✦ Plateforme de réservation #1 au Togo</div>
+      <h1 class="hero-title">
+        Réservez vos logements
+        <span class="accent-text">sans stress.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Reservaft vous permet de trouver et réserver des logements rapidement,
+        simplement et en toute sécurité.
+      </p>
+      <div class="hero-actions">
+        <a href="/login" class="btn btn-primary">
+          <span>🔐</span> Se connecter
+        </a>
+        <a href="https://wa.me/22897943844?text=Nous%20voulons%20vous%20connecter%20%C3%A0%20la%20plateforme"
+           target="_blank" class="btn btn-ghost">
+          <span>📲</span> Contacter l'admin
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>200+</strong>
+          <span>Logements</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <strong>1 200+</strong>
+          <span>Réservations</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <strong>100%</strong>
+          <span>Sécurisé</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="mockup-card">
+        <div class="mockup-header">
+          <div class="mockup-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="mockup-title-bar">Reservaft App</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-listing">
+            <div class="listing-img">🏖️</div>
+            <div class="listing-info">
+              <div class="listing-name">Villa Bord de Mer</div>
+              <div class="listing-loc">📍 Lomé, Togo</div>
+              <div class="listing-price">35 000 FCFA <span>/ nuit</span></div>
+              <span class="listing-badge">Disponible</span>
+            </div>
+          </div>
+          <div class="mockup-listing">
+            <div class="listing-img">🏢</div>
+            <div class="listing-info">
+              <div class="listing-name">Studio Moderne</div>
+              <div class="listing-loc">📍 Kpalimé, Togo</div>
+              <div class="listing-price">18 000 FCFA <span>/ nuit</span></div>
+              <span class="listing-badge">Disponible</span>
+            </div>
+          </div>
+          <div class="mockup-reserve-btn">Réserver maintenant →</div>
+        </div>
+      </div>
+      <div class="float-badge float-top">✅ Réservation confirmée !</div>
+      <div class="float-badge float-bottom">🔒 Paiement sécurisé</div>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-label">Pourquoi Reservaft ?</div>
+    <h2 class="section-title">Tout ce dont vous avez besoin,<br/><em>en un seul endroit.</em></h2>
+
+    <div class="features-grid">
+      <div class="feature-card feature-large">
+        <div class="feature-icon">🔎</div>
+        <h3>Recherche rapide</h3>
+        <p>Trouvez des logements disponibles en quelques secondes grâce à notre moteur de recherche filtré par ville, prix et disponibilité.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Réservation simple</h3>
+        <p>Réservez avec sélection de dates et calcul automatique du montant total.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Accès sécurisé</h3>
+        <p>Authentification protégée pour chaque compte utilisateur.</p>
+      </div>
+      <div class="feature-card feature-wide">
+        <div class="feature-icon">📊</div>
+        <h3>Tableau de bord personnel</h3>
+        <p>Consultez toutes vos réservations passées et à venir depuis votre espace dédié, avec le détail des montants et des logements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="section-label">Comment ça marche ?</div>
+    <h2 class="section-title">3 étapes, c'est tout.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Créez votre compte</h4>
+        <p>Inscrivez-vous en quelques secondes avec votre email.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Choisissez un logement</h4>
+        <p>Parcourez les logements disponibles et sélectionnez le vôtre.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Confirmez la réservation</h4>
+        <p>Choisissez vos dates et confirmez. Le montant est calculé automatiquement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <div class="cta-inner">
+      <div class="cta-badge">✦ Prêt à commencer ?</div>
+      <h2>Trouvez votre prochain logement<br/><span>dès aujourd'hui.</span></h2>
+      <div class="cta-actions">
+        <a href="/logements" class="btn btn-white">🏠 Voir les logements</a>
+        <a href="mailto:admin@reservaft.com" class="btn btn-ghost-white">📧 Contacter l'admin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <span class="logo-icon">⬡</span>
+          <span class="logo-text">Reservaft</span>
+        </div>
+        <p>Plateforme de réservation simple,<br/>rapide et sécurisée.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Plateforme</h5>
+          <a href="/logements">Logements</a>
+          <a href="/login">Connexion</a>
+          <a href="/register">Inscription</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="mailto:support@reservaft.com">support@reservaft.com</a>
+          <a href="https://wa.me/22897943844">+228 97 94 38 44</a>
+        </div>
+        <div class="footer-col">
+          <h5>Suivez-nous</h5>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Reservaft. Tous droits réservés.</span>
+      <span>Fait avec ❤️ au Togo</span>
+    </div>
+  </footer>

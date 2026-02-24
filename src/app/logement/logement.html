@@ -1,0 +1,72 @@
+<div class="container">
+
+  <!-- HEADER + BUTTON ADD -->
+  <div class="header">
+    <button class="btn-add" *ngIf="role === 'user' || role === 'admin'" (click)="openModal()">
+      + Ajouter
+    </button>
+  </div>
+
+  <!-- TABLE -->
+  <div class="cards-container">
+    <div class="card" *ngFor="let log of logements; let i = index">
+
+      <!-- IMAGE + PRIX AU HOVER -->
+      <div class="image-box">
+        <img [src]="log.images.length > 0 ? log.images[0] : 'https://via.placeholder.com/300'" alt="logement" />
+        <div class="price-overlay">
+          {{ log.prix | currency:'EUR' }}
+        </div>
+
+        <!-- Badge disponible -->
+        <span class="badge" [class.available]="log.disponible" [class.unavailable]="!log.disponible">
+          {{ log.disponible ? 'Disponible' : 'Indisponible' }}
+        </span>
+      </div>
+
+      <!-- INFOS -->
+      <div class="card-body">
+        <h4>{{ log.nom }}</h4>
+        <p>{{ log.ville }}</p>
+
+        <div class="actions">
+          <button (click)="editLogement(i)">✏️</button>
+          <button (click)="deleteLogement(i)">🗑</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+
+    <h3>{{ isEditMode ? 'Modifier' : 'Ajouter' }} un logement</h3>
+
+    <form (ngSubmit)="submitForm()">
+
+      <input type="text" [(ngModel)]="logementForm.nom" name="nom" placeholder="Nom" required />
+      <input type="text" [(ngModel)]="logementForm.ville" name="ville" placeholder="Ville" required />
+      <input type="number" [(ngModel)]="logementForm.prix" name="prix" placeholder="Prix" required />
+
+      <select [(ngModel)]="logementForm.disponible" name="disponible">
+        <option [ngValue]="true">Disponible</option>
+        <option [ngValue]="false">Non disponible</option>
+      </select>
+
+      <input type="file" multiple (change)="onFileChange($event)" />
+
+      <div class="modal-buttons">
+        <button type="submit" class="btn-add">
+          {{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}
+        </button>
+        <button type="button" class="btn-danger" (click)="closeModal()">
+          Annuler
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -2,9 +2,7 @@
 /* SIDEBAR BASE */
 /* ============================= */
 
-/* ============================= */
-/* HEADER AJUSTÉ (Un peu plus haut) */
-/* ============================= */
+
 .sidebar-header {
   /* On passe de 10px à 16px pour donner un peu d'air */
   padding: 16px 20px; 
@@ -21,6 +19,18 @@
   font-size: 1.3rem; /* On remonte un peu la taille du texte */
   letter-spacing: 1.5px;
   text-transform: uppercase; /* Pour un look plus pro */
+}
+
+.sidebar-header .brand {
+  display: flex;
+  
+  gap: 0.5rem; /* espace entre icône et texte */
+}
+
+.brand-icon {
+  font-size: 3.5rem; /* taille de l’icône */
+  margin-top: -27px;
+  color: #0a0a0a; /* couleur, par exemple vert */
 }
 /* SCROLL si menu long */
 .sidebar-menu {
@@ -93,6 +103,24 @@
 
 .sidebar-content.collapsed .menu-text {
   display: none;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+  flex: 1;
+  overflow-y: auto;
+  /* Ajoute l'espace vertical entre chaque lien */
+  gap: 12px; 
+}
+
+.menu-item {
+  /* On s'assure que les marges ne viennent pas perturber le gap */
+  margin: 0 12px; 
+  display: flex;
+  align-items: center;
+  /* ... reste du code ... */
 }
 
 /* ============================= */
